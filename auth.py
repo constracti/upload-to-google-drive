@@ -1,11 +1,17 @@
 #!/usr/bin/python3
 
 import json
+import os.path
 import requests
 import urllib.parse
 
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+
 client = None
-with open('client_secret.json', 'r') as f:
+client_name = 'client_secret.json'
+client_path = os.path.join(script_dir, client_name)
+with open(client_path, 'r') as f:
 	client = json.load(f)
 assert client is not None and 'installed' in client
 client = client['installed']
@@ -50,6 +56,7 @@ print('=== refresh token ===')
 print(refresh_token)
 print()
 
-refresh_path = 'refresh_token.txt'
+refresh_name = 'refresh_token.txt'
+refresh_path = os.path.join(script_dir, refresh_name)
 with open(refresh_path, mode='w') as f:
 	f.write(refresh_token + '\n')

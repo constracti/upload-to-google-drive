@@ -6,6 +6,9 @@ import mimetypes
 import os.path
 import requests
 
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+
 parser = argparse.ArgumentParser()
 parser.add_argument('file', metavar='FILE')
 parser.add_argument('folder', metavar='FOLDER_ID')
@@ -21,7 +24,9 @@ file_mime_type = mimetypes.guess_type(file_path)[0]
 ### client secret ###
 
 client = None
-with open('client_secret.json', 'r') as f:
+client_name = 'client_secret.json'
+client_path = os.path.join(script_dir, client_name)
+with open(client_path, 'r') as f:
 	client = json.load(f)
 assert client is not None and 'installed' in client
 client = client['installed']
@@ -42,7 +47,8 @@ if args.verbose:
 ### refresh token ###
 
 refresh_token = None
-refresh_path = 'refresh_token.txt'
+refresh_name = 'refresh_token.txt'
+refresh_path = os.path.join(script_dir, refresh_name)
 with open(refresh_path, mode='r') as f:
 	refresh_token = f.read().rstrip()
 
