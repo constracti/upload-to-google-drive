@@ -18,7 +18,7 @@ Navigate to https://console.cloud.google.com/ and create a new project.
 
 Find and enable **Google Drive API**.
 
-Click on **Create Credentials***.
+Click on **Create Credentials**.
 Select **Google Drive API**.
 You will be accessing **User data**.
 
