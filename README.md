@@ -35,7 +35,6 @@ python3 auth.py
 ```
 
 Open the printed URL in a browser and follow the instructions.
-Then copy the generated code to program.
 
 ## Usage
 
