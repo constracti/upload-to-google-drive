@@ -67,7 +67,7 @@ r = requests.post('https://accounts.google.com/o/oauth2/token', data={
 	'grant_type': 'refresh_token',
 })
 r = r.json()
-assert 'error' not in r, r['error_description']
+assert 'error' not in r, r['error']
 
 access_token = r['access_token']
 if args.verbose:
