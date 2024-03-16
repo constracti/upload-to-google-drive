@@ -2,10 +2,10 @@ import http.server
 import requests
 import urllib.parse
 
-from page import UploadToDrivePage
+from page import UploadToGoogleDrivePage
 
 
-class UploadToDriveServer(http.server.BaseHTTPRequestHandler):
+class UploadToGoogleDriveServer(http.server.BaseHTTPRequestHandler):
 
 	def get_addr(self, path='/'):
 		return 'http://{:s}:{:d}{:s}'.format(self.server.server_name, self.server.server_port, path)
@@ -53,7 +53,7 @@ class UploadToDriveServer(http.server.BaseHTTPRequestHandler):
 		self.end_headers()
 
 	def alert(self, message):
-		page = UploadToDrivePage()
+		page = UploadToGoogleDrivePage()
 		page.add_body_tag('<p>{:s}</p>'.format(message))
 		html = page.get_html()
 		self.send_response(200)

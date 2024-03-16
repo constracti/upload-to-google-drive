@@ -4,7 +4,7 @@ import http.server
 import json
 import os.path
 
-from server import UploadToDriveServer
+from server import UploadToGoogleDriveServer
 
 script_path = os.path.abspath(__file__)
 script_dir = os.path.dirname(script_path)
@@ -45,7 +45,7 @@ print('Navigate to the page above and follow the instructions.')
 print('To kill the server press Ctrl+C on this window.')
 print()
 
-server = http.server.HTTPServer(address, UploadToDriveServer)
+server = http.server.HTTPServer(address, UploadToGoogleDriveServer)
 server.client = client
 server.callback = write_refresh_token
 try:
